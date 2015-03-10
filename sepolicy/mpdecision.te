@@ -23,6 +23,10 @@ allow mpdecision self:socket create_socket_perms;
 allow mpdecision power_control_device:chr_file w_file_perms;
 allow mpdecision mpdecision_socket:dir rw_dir_perms;
 allow mpdecision mpdecision_socket:sock_file { create_file_perms unlink };
+allow mpdecision socket_device:dir rw_dir_perms;
+allow mpdecision socket_device:sock_file { write create setattr };
+allow mpdecision thermal_socket:sock_file write;
+allow mpdecision thermal-engine:unix_stream_socket connectto;
 # Without the following line, the following denial occurs:
 # <12>[ 39.917299] type=1400 audit(1409704476.019:90): avc: denied { write } for pid=328 comm="mpdecision" name="scaling_min_freq" dev="sysfs" ino=13165 scontext=u:r:mpdecision:s0 tcontext=u:object_r:sysfs:s0 tclass=file permissive=1
 # even though the file is properly labeled:

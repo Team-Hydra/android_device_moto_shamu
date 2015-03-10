@@ -138,6 +138,9 @@
 /sys/devices/virtual/smdpkt/smdcntl([0-9])+/open_timeout u:object_r:sysfs_smdcntl_open_timeout:s0
 
 # Context for mpdecision
+
+/data/system/default_values                                     u:object_r:mpctl_data_file:s0
+
 /sys/module/msm_thermal/core_control/cpus_offlined              u:object_r:sysfs_mpdecision:s0
 /sys/devices/system/cpu/cpu0/rq-stats(/.*)?                     u:object_r:sysfs_rqstats:s0
 /sys/module/cpu_boost/parameters(/.*)?                          u:object_r:sysfs_cpuboost:s0
