@@ -34,6 +34,7 @@ on boot
     chown radio system /sys/class/devfreq/qcom,cpubw.36/min_freq
     chmod 664 /sys/class/devfreq/qcom,cpubw.36/min_freq
 
+
     chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_rate
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/timer_rate
     chown system system /sys/devices/system/cpu/cpufreq/interactive/timer_slack
@@ -44,6 +45,8 @@ on boot
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
     chown system system /sys/devices/system/cpu/cpufreq/interactive/target_loads
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/target_loads
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis
+    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis
     chown system system /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
     chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
     chown system system /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay
@@ -61,8 +64,6 @@ on boot
     chmod 0660 /sys/module/cpu_boost/parameters/boost_ms
     chown system system /sys/module/cpu_boost/parameters/sync_threshold
     chmod 0660 /sys/module/cpu_boost/parameters/sync_threshold
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
-    chmod 0660 /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor
     chown system system /sys/module/cpu_boost/parameters/input_boost_freq
     chmod 0660 /sys/module/cpu_boost/parameters/input_boost_freq
     chown system system /sys/module/cpu_boost/parameters/input_boost_ms
@@ -105,9 +106,7 @@ on property:dev.bootcomplete=1
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1497600
     write /sys/devices/system/cpu/cpufreq/interactive/target_loads "85 1500000:90 1800000:70"
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
-    write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
-    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_load 75
-    write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 1728000
+    write /sys/devices/system/cpu/cpufreq/interactive/max_freq_hysteresis 100000
 
     # boost settings
     write /sys/module/cpu_boost/parameters/boost_ms 20
