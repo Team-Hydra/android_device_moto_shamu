@@ -9,4 +9,7 @@ init_daemon_domain(cnd)
 net_domain(cnd)
 
 # allow cnd the following capability
-allow cnd self:capability { setuid setgid net_raw };
+allow cnd self:capability { net_raw setuid setgid };
+
+allow cnd netmgrd:dir search;
+allow cnd netmgrd:file r_file_perms;
